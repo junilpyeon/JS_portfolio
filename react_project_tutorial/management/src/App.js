@@ -1,14 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Customer from './components/Customer';
 import './App.css';
 
-function App() {
-  return (
-    <div className="lightpink-background">
-      <img src={logo} lat="logo"/>
-      <h2>Let's develop!</h2>
-    </div>
-  );
+const customer = {
+  'name':'편준일',
+  'birthday':'950425',
+  'gender':'남자',
+  'job':'개발자'
+}
+
+class App extends Component {
+  render() {
+    return (
+      <Customer
+        name={customer.name}
+        birthday={customer.birthday}
+        gender={customer.gender}
+        job={customer.job}
+      />
+    );
+  }
 }
 
 export default App;
