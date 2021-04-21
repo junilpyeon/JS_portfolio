@@ -1,0 +1,10 @@
+드림코딩 엘리
+https://www.youtube.com/watch?v=67stn7Pu7s4
+
+HTML 요소 참고서
+https://developer.mozilla.org/ko/docs/Web/HTML/Element
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+font 컬러 디자인 참고
+https://fontawesome.com/
+https://material.io/resources/color/#!/
