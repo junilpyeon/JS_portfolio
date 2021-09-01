@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const crypto = require('crypto');
-const { generateToken } = require('lib/token');
+const { generateToken } = require('../lib/token');
 
 function hash(password) {
     return crypto.createHmac('sha256', process.env.SECRET_KEY).update(password).digest('hex');
@@ -28,16 +28,6 @@ const Account = new Schema({
     thoughtCount: { type: Number, default: 0 }, // 서비스에서 포스트를 작성 할 때마다 1씩 올라갑니다
     createdAt: { type: Date, default: Date.now }
 });
-
-Account.methods.generateToken = function() {
-  // JWT 에 담을 내용
-  const payload = {
-      _id: this._id,
-      profile: this.profile
-  };
-
-  return generateToken(payload, 'account');
-};
 
 Account.statics.findByUsername = function(username) {
     // 객체에 내장되어있는 값을 사용 할 때는 객체명.키 이런식으로 쿼리하면 됩니다
@@ -79,3 +69,13 @@ Account.methods.validatePassword = function(password) {
 };
 
 module.exports = mongoose.model('Account', Account);
+
+Account.methods.generateToken = function() {
+    // JWT 에 담을 내용
+    const payload = {
+        _id: this._id,
+        profile: this.profile
+    };
+
+    return generateToken(payload, 'account');
+};

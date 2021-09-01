@@ -2,6 +2,7 @@ require('dotenv').config(); // .env 파일에서 환경변수 불러오기
 
 const Koa = require('koa');
 const Router = require('koa-router');
+const bodyParser = require('body-parser');
 
 const app = new Koa();
 const router = new Router();
@@ -12,9 +13,7 @@ const { jwtMiddleware } = require('lib/token');
 
 mongoose.Promise = global.Promise; // Node 의 네이티브 Promise 사용
 // mongodb 연결
-mongoose.connect(process.env.MONGO_URI, {
-  useMongoClient: true
-}).then(
+mongoose.connect(process.env.MONGO_URI).then(
     (response) => {
         console.log('Successfully connected to mongodb');
     }
